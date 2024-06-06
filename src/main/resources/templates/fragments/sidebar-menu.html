@@ -120,11 +120,10 @@
             <div class="mt-5 h-0 flex-1 overflow-y-auto">
                 <nav class="space-y-1 px-2">
 
-                    <a th:replace="~{fragments/sidebar-buttons :: mobile-button(link='#', title='Home', menuItem='home',icon='home')}"></a>
-                    <a th:replace="~{fragments/sidebar-buttons :: mobile-button(link='#', title='Staff', menuItem='staff', icon='staff')}"></a>
-                    <a th:replace="~{fragments/sidebar-buttons :: mobile-button(link='#', title='Menu', menuItem='menu',icon='menu')}"></a>
-                    <a th:replace="~{fragments/sidebar-buttons :: mobile-button(link='#', title='Info', menuItem='info',icon='info')}"></a>
-                    <a th:replace="~{fragments/sidebar-buttons :: mobile-button(link='#', title='Rewievs', menuItem='rewievs',icon='rewievs')}"></a>
+                    <a th:replace="~{fragments/sidebar-buttons :: mobile-button(link=@{/}, title='Home', menuItem='home',icon='home')}"></a>
+                    <a th:replace="~{fragments/sidebar-buttons :: mobile-button(link=@{/staff}, title='Staff', menuItem='staff', icon='staff')}"></a>
+                    <a th:replace="~{fragments/sidebar-buttons :: mobile-button(link=@{/menu}, title='Menu', menuItem='menu',icon='menu')}"></a>
+                    <a th:replace="~{fragments/sidebar-buttons :: mobile-button(link=@{/rewievs}, title='Rewievs', menuItem='rewievs',icon='rewievs')}"></a>
                 </nav>
             </div>
         </div>
@@ -232,11 +231,10 @@
         </div>
         <div class="mt-5 flex flex-grow flex-col">
             <nav class="flex-1 space-y-1 px-2 pb-4">
-                <a th:replace="fragments/sidebar-buttons :: desktop-button(link='#', title='Home', menuItem='home', icon='home')"></a>
-                <a th:replace="fragments/sidebar-buttons :: desktop-button(link='#', title='Staff', menuItem='staff', icon='staff')"></a>
-                <a th:replace="fragments/sidebar-buttons :: desktop-button(link='#', title='Menu', menuItem='menu', icon='menu')"></a>
-                <a th:replace="fragments/sidebar-buttons :: desktop-button(link='#', title='Info', menuItem='info', icon='info')"></a>
-                <a th:replace="fragments/sidebar-buttons :: desktop-button(link='#', title='Rewievs', menuItem='rewievs', icon='rewievs')"></a>
+                <a th:replace="fragments/sidebar-buttons :: desktop-button(link=@{/}, title='Home', menuItem='home', icon='home')"></a>
+                <a th:replace="fragments/sidebar-buttons :: desktop-button(link=@{/staff}, title='Staff', menuItem='staff', icon='staff')"></a>
+                <a th:replace="fragments/sidebar-buttons :: desktop-button(link=@{/menu}, title='Menu', menuItem='menu', icon='menu')"></a>
+                <a th:replace="fragments/sidebar-buttons :: desktop-button(link=@{/rewievs}, title='Rewievs', menuItem='rewievs', icon='rewievs')"></a>
             </nav>
         </div>
     </div>
