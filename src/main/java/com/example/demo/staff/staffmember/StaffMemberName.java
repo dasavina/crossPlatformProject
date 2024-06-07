@@ -1,0 +1,58 @@
+package com.example.demo.staff.staffmember;
+
+
+import jakarta.persistence.Embeddable;
+import org.springframework.util.Assert;
+import org.testcontainers.shaded.com.google.common.base.MoreObjects;
+
+import java.util.Objects;
+
+@Embeddable
+public class StaffMemberName {
+    private String firstName;
+    private String lastName;
+
+    protected StaffMemberName() {
+    }
+
+    public StaffMemberName(String firstName, String lastName) {
+        Assert.hasText(firstName, "firstName cannot be blank");
+        Assert.hasText(lastName, "lastName cannot be blank");
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        StaffMemberName userName = (StaffMemberName) o;
+        return Objects.equals(firstName, userName.firstName) &&
+                Objects.equals(lastName, userName.lastName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(firstName, lastName);
+    }
+
+    @Override
+    public String toString() {
+        return MoreObjects.toStringHelper(this)
+                .add("firstName", firstName)
+                .add("lastName", lastName)
+                .toString();
+    }
+}

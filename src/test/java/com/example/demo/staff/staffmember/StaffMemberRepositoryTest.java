@@ -1,4 +1,5 @@
-package com.example.demo;
+package com.example.demo.staff.staffmember;
+
 import io.github.wimdeblauwe.jpearl.InMemoryUniqueIdGenerator;
 import io.github.wimdeblauwe.jpearl.UniqueIdGenerator;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -9,12 +10,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.jdbc.core.JdbcTemplate;
+
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import org.springframework.test.context.ActiveProfiles;
 
-import com.example.demo.staff.*;
-
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -43,12 +45,16 @@ class StaffMemberRepositoryTest {
     @Test
     void testSaveStaffMember() {
         StaffMemberId id = repository.nextId();
-        repository.save(new StaffMember(id));
-
+        repository.save(new StaffMember(id,
+                new StaffMemberName("Tommy", "Walton"),
+                Gender.MALE,
+                Position.Chef));
         entityManager.flush();
-
-        UUID idInDb = jdbcTemplate.queryForObject("SELECT id FROM tt_Staff_member", UUID.class);
-        assertThat(idInDb).isEqualTo(id.getId());
+        assertThat(jdbcTemplate.queryForObject("SELECT id FROM tt_staff_member", UUID.class)).isEqualTo(id.getId());
+        assertThat(jdbcTemplate.queryForObject("SELECT first_name FROM tt_staff_member", String.class)).isEqualTo("Tommy");
+        assertThat(jdbcTemplate.queryForObject("SELECT last_name FROM tt_staff_member", String.class)).isEqualTo("Walton");
+        assertThat(jdbcTemplate.queryForObject("SELECT gender FROM tt_staff_member", Gender.class)).isEqualTo(Gender.MALE);
+        assertThat(jdbcTemplate.queryForObject("SELECT position FROM tt_staff_member", Position.class)).isEqualTo(Position.Chef);
     }
 
     @TestConfiguration

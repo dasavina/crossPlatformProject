@@ -1,4 +1,4 @@
-package com.example.demo.staff;
+package com.example.demo.staff.staffmember;
 import io.github.wimdeblauwe.jpearl.UniqueIdGenerator;
 
 import java.util.UUID;
