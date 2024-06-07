@@ -20,6 +20,7 @@ public class StaffMember extends AbstractEntity<StaffMemberId> {
     private Gender gender;
 
     @NotNull
+    @Enumerated
     private Position position;
 
     /**
